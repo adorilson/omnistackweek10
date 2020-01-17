@@ -3,6 +3,7 @@ import React from 'react';
 import  './global.css';
 import './App.css';
 import './Sidebar.css';
+import './Main.css';
 
 
 function App() {
@@ -38,7 +39,52 @@ function App() {
           </form>
         </aside>
         <main>
-
+          <ul>
+            <li className="dev-item">
+              <header>
+                <img src="https://avatars0.githubusercontent.com/u/169837?s=460&v=4" alt="Adorilson Bezerra"/>
+                <div className="user-info">
+                  <strong>Adorilson Bezerra</strong>
+                  <span>Linux, Python, SQL, Django</span>
+                </div>
+              </header>
+              <p>Professor and Software Developer</p>
+              <a href="https://github.com/adorilson">Acessar perfil no Github</a>
+            </li>
+            <li className="dev-item">
+              <header>
+                <img src="https://avatars0.githubusercontent.com/u/169837?s=460&v=4" alt="Adorilson Bezerra"/>
+                <div className="user-info">
+                  <strong>Adorilson Bezerra</strong>
+                  <span>Linux, Python, SQL, Django</span>
+                </div>
+              </header>
+              <p>Professor and Software Developer</p>
+              <a href="https://github.com/adorilson">Acessar perfil no Github</a>
+            </li>
+            <li className="dev-item">
+              <header>
+                <img src="https://avatars0.githubusercontent.com/u/169837?s=460&v=4" alt="Adorilson Bezerra"/>
+                <div className="user-info">
+                  <strong>Adorilson Bezerra</strong>
+                  <span>Linux, Python, SQL, Django</span>
+                </div>
+              </header>
+              <p>Professor and Software Developer</p>
+              <a href="https://github.com/adorilson">Acessar perfil no Github</a>
+            </li>
+            <li className="dev-item">
+              <header>
+                <img src="https://avatars0.githubusercontent.com/u/169837?s=460&v=4" alt="Adorilson Bezerra"/>
+                <div className="user-info">
+                  <strong>Adorilson Bezerra</strong>
+                  <span>Linux, Python, SQL, Django</span>
+                </div>
+              </header>
+              <p>Professor and Software Developer</p>
+              <a href="https://github.com/adorilson">Acessar perfil no Github</a>
+            </li>
+          </ul>
         </main>
     </div>
     );
