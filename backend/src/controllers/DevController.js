@@ -57,7 +57,7 @@ module.exports = {
 
         const dev = await create_or_update({github_username, techs, latitude, longitude})
 
-        return response.json({dev})
+        return response.json(dev)
     },
 
     async update(request, response){

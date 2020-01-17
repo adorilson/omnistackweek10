@@ -7,6 +7,8 @@ import './Sidebar.css';
 import './Main.css';
 
 function App() {
+  const [devs, setDevs] = useState([]);
+
   const [github_username, setGithubUsername] = useState('');
   const [techs, setTechs] = useState('');
 
@@ -30,6 +32,16 @@ function App() {
     );
   }, []);
 
+  useEffect(() => {
+      async function loadDevs(){
+          const response = await api.get('/devs');
+
+          setDevs(response.data);
+      }
+
+      loadDevs();
+  }, []);
+
   async function handleAddDev(e){
       e.preventDefault();
 
@@ -42,6 +54,8 @@ function App() {
 
       setGithubUsername('');
       setTechs('');
+
+      setDevs(devs.concat(response.data));
    }
 
   return (
@@ -103,50 +117,19 @@ function App() {
         </aside>
         <main>
           <ul>
-            <li className="dev-item">
-              <header>
-                <img src="https://avatars0.githubusercontent.com/u/169837?s=460&v=4" alt="Adorilson Bezerra"/>
-                <div className="user-info">
-                  <strong>Adorilson Bezerra</strong>
-                  <span>Linux, Python, SQL, Django</span>
-                </div>
-              </header>
-              <p>Professor and Software Developer</p>
-              <a href="https://github.com/adorilson">Acessar perfil no Github</a>
-            </li>
-            <li className="dev-item">
-              <header>
-                <img src="https://avatars0.githubusercontent.com/u/169837?s=460&v=4" alt="Adorilson Bezerra"/>
-                <div className="user-info">
-                  <strong>Adorilson Bezerra</strong>
-                  <span>Linux, Python, SQL, Django</span>
-                </div>
-              </header>
-              <p>Professor and Software Developer</p>
-              <a href="https://github.com/adorilson">Acessar perfil no Github</a>
-            </li>
-            <li className="dev-item">
-              <header>
-                <img src="https://avatars0.githubusercontent.com/u/169837?s=460&v=4" alt="Adorilson Bezerra"/>
-                <div className="user-info">
-                  <strong>Adorilson Bezerra</strong>
-                  <span>Linux, Python, SQL, Django</span>
-                </div>
-              </header>
-              <p>Professor and Software Developer</p>
-              <a href="https://github.com/adorilson">Acessar perfil no Github</a>
-            </li>
-            <li className="dev-item">
-              <header>
-                <img src="https://avatars0.githubusercontent.com/u/169837?s=460&v=4" alt="Adorilson Bezerra"/>
-                <div className="user-info">
-                  <strong>Adorilson Bezerra</strong>
-                  <span>Linux, Python, SQL, Django</span>
-                </div>
-              </header>
-              <p>Professor and Software Developer</p>
-              <a href="https://github.com/adorilson">Acessar perfil no Github</a>
-            </li>
+              {devs.map(dev => (
+                  <li key={dev._id} className="dev-item">
+                      <header>
+                        <img src={dev.avatar_url} alt={dev.name}/>
+                        <div className="user-info">
+                          <strong>{dev.name}</strong>
+                          <span>{dev.techs.join(', ')}</span>
+                        </div>
+                      </header>
+                      <p>{dev.bio}</p>
+                      <a href={`https://github.com/${dev.github_username}`}>Acessar perfil no Github</a>
+                  </li>
+              ))}
           </ul>
         </main>
     </div>
