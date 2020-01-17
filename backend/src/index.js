@@ -2,12 +2,13 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors');
 const routes = require('./routes')
+const config = require('./config')
+
+const mongourl = config.mongourl
+mongoose.connect(mongourl, {useUnifiedTopology: true, useNewUrlParser: true})
+
 
 const app = express()
-
-const mongourl = PUT YOUR URL HERE
-
-mongoose.connect(mongourl, {useUnifiedTopology: true, useNewUrlParser: true})
 
 app.use(cors());
 app.use(express.json())
