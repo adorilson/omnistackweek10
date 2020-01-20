@@ -1,6 +1,7 @@
 const axios = require('axios')
 const Dev = require('../models/Dev')
 const parseStringAsArray = require('../utils/parseStringAsArray')
+const { findConnections, sendMessage } = require('../websocket');
 
 async function create_or_update(developer){
 
@@ -28,6 +29,16 @@ async function create_or_update(developer){
             techs: techs_array,
             location
         })
+
+        // Filtrar as conexões que estão a no máximoa 10k de distância
+        // e que o novo dev tenha pelo menos uma das novas tecnologias
+
+        const sendSocketMessageTo = findConnections(
+            {latitude, longitude},
+            techs_array,
+        )
+
+        sendMessage(sendSocketMessageTo, 'new-dev', dev);
     }else{
         await Dev.update({
             github_username,
